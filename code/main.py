@@ -1,3 +1,8 @@
+#=====THINGS TO EDIT=====
+# Put in your zip_code variable for the snow day calculator
+# Put in your Google Home mini IP address
+# If you are using OpenWeather API enter your API key
+# You can change the time that it sends the text message
 # ======================================== Libraries ========================================
 from googlehomepush import GoogleHome  # Import Google Home library
 import requests  # Library for making HTTP requests
