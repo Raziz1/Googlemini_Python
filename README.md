@@ -1,6 +1,10 @@
 # Googlemini_Python 🐍📶
 Google Home Mini + Python + WebScrapper
 
+<p> 
+  <img width = 256 height = 256 align='Right' src="https://github.com/Raziz1/Googlemini_Python/blob/main/image/googlehome_python.png? raw=true">
+</p>
+
 ## Libraries & Resources 📚
 * [googlehomepush](https://pypi.org/project/googlehomepush/)
   - [googlehomepush on GITHUB](https://github.com/deblockt/google-home-push)
