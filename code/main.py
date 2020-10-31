@@ -10,30 +10,36 @@ import datetime
 
 # ======================================== Variables ========================================
 # SnowDay Predictor URL request
-URL = "https://www.snowdaycalculator.com/prediction.php?zipcode=K2S1Y9&snowdays=0&extra=-0.4&"
+zip_code = "xxx xxx"
+URL = "https://www.snowdaycalculator.com/prediction.php?zipcode="+zip_code+"&snowdays=0&extra=-0.4&"
 res = requests.get(URL)
 html_page = res.content
 soup = BeautifulSoup(html_page, 'html.parser')
+
 # OSTA Predictor URL request
 URL1 = "http://www.ottawaschoolbus.ca/"
 res1 = requests.get(URL1)
 html_page1 = res1.content
 soup1 = BeautifulSoup(html_page1, 'html.parser')
+
 # Weather URL request
 """
 The Weather one uses OPENWEATHER API which requires you to sign up for free to access their API keys
 The Weather one struggles to be passed to the google home mini because it contains such a long string
 """
-URL2 = "http://api.openweathermap.org/data/2.5/forecast?q=Ottawa,CA&units=metric&cnt=1&appid=0498228c4cc70f8c9f9051d17dee5679"
+weather_key
+URL2 = "http://api.openweathermap.org/data/2.5/forecast?q=Ottawa,CA&units=metric&cnt=1&appid="+weather_key
 res2 = requests.get(URL2)
-html_page2 = res2.json()
+html_page2 = res2.json() # JSON parsing
 # soup2 = BeautifulSoup(html_page2, 'html.parser')
 
 # Get tomorrows date
 date_tomorrow = datetime.date.today() + datetime.timedelta(days=1)
 set_time = datetime.datetime.now()
-greeting = "Good Morning Buddha Bowl. "
+greeting = "Good Morning. "
 ready = False
+
+google_home_ip = "xxx.xxx.xx.xxx"
 
 
 # Function that gets the OSTA bus status
@@ -43,7 +49,7 @@ def busStatus():
         # print(osta_status)
         return osta_status
     except:
-        GoogleHome(host="192.168.50.180").say("An error occurred")
+        GoogleHome(host=google_home_ip).say("An error occurred")
 
 
 # Function that returns the snow day predictor percentage
@@ -78,7 +84,7 @@ def getPredictor():
                     s = 100
                 return s
     except ValueError as err:
-        GoogleHome(host="192.168.50.180").say("An error occurred" + str(err))
+        GoogleHome(host=google_home_ip).say("An error occurred" + str(err))
 
 
 # Function that gets the weather using OPENWEATHER API
@@ -102,12 +108,12 @@ while True:
     get_time = set_time.strftime("%H:%M")  # Get the only the hours and minutes
     print(get_time)  # Use this so that when you run as an executable you can see the output to test it is working
     # Runs if it is a specific time and it hasn't been triggered
-    if get_time == "05:55" and ready == False:
+    if get_time == "05:55" and ready == False:  
         ready = True
         """ ## Weather Things##
         temp, temp_high, temp_low, precipitation, description = getWeather() 
         weather_text = "Currently it is " + temp + " degrees. " + " There will be a high of " + temp_high + " degrees and a low of " + temp_low + "degrees. The description is " + description + ". The chance of precipitation is " + precipitation + "percent."
-        GoogleHome(host="192.168.50.180").say(weather_text)
+        GoogleHome(host=google_home_ip).say(weather_text)
         """
         # Get the OSTA bust status and the snowday predictor for tomorrow
         bus_text = busStatus()
@@ -115,10 +121,10 @@ while True:
 
         # Try and catch exception
         try:
-            GoogleHome(host="192.168.50.180").say(greeting + bus_text + snow_text)
+            GoogleHome(host=google_home_ip).say(greeting + bus_text + snow_text)
 
         except ValueError as err:
             print(ValueError)
-            GoogleHome(host="192.168.50.180").say("An error occurred" + str(err))
+            GoogleHome(host=google_home_ip).say("An error occurred" + str(err))
     elif get_time != "05:55":
         ready = False
