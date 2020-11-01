@@ -33,3 +33,4 @@ You can tell Windows 10 or Mac Os to automatically run this script at specific t
 ## Notes 📜
 * When Scheduling the task ensure you allow the task to wake the computer and take a look at your computer's power options
 * Scheduled tasks will not work if the computer is hibernating
+* If the laptop is sleeping and the lid is closed the task will not run (Unsolved). The lid has to be open
