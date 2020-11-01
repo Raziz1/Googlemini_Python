@@ -29,3 +29,7 @@ You can tell Windows 10 or Mac Os to automatically run this script at specific t
     1. [Turn Python script into Executable](https://datatofish.com/executable-pyinstaller/)
 2. The next step is to create a scheduled task in the Windows Task Scheduler. You do this by following the instructions on the following website: 
     1. [Windows Task Scheduling](https://www.jcchouinard.com/python-automation-using-task-scheduler/)
+
+## Notes 📜
+* When Scheduling the task ensure you allow the task to wake the computer and take a look at your computer's power options
+* Scheduled tasks will not work if the computer is hibernating
