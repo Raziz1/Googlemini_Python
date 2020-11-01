@@ -12,6 +12,7 @@ Google Home Mini + Python + WebScrapper
 * [OpenWeather API](https://openweathermap.org/)
 * [Snowday Calculator](https://www.snowdaycalculator.com/calculator.php)
 * [OSTA](http://www.ottawaschoolbus.ca/)
+* [JSON parsing assistant](http://json.parser.online.fr/)
 
 ## Setup 📝
 This project scrapes data from the internet and pushes text messages to a google home mini at a specific time
